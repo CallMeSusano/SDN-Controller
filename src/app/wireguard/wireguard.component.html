@@ -1,0 +1,25 @@
+<br><br>
+<div class="container">
+    <h1>{{ bridgeId ? 'Editar' : 'Adicionar' }} Interface Wireguard</h1>
+    <form (ngSubmit)="submitForm()">
+
+        
+        <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name">
+        </div>
+        <div class="form-group">
+            <label for="port">Porta:</label>
+            <input type="text" class="form-control" id="port" name="port" [(ngModel)]="port">
+        </div>
+        <div class="form-group">
+            <label for="disabled">Ativar:</label>
+            <select class="form-control" id="disabled" name="disabled" [(ngModel)]="disabled">
+                <option value="false">Sim</option>
+                <option value="true">Não</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">{{ bridgeId ? 'Editar' : 'Adicionar' }}</button>
+    </form>
+</div>

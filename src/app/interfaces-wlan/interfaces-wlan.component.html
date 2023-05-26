@@ -1,0 +1,33 @@
+<br><br><br>
+<div class="container">
+  
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Endereço MAC</th>
+        <th scope="col">Banda</th>
+        <th scope="col">Frequência</th>
+        <th scope="col">SSID</th>
+        <th scope="col">Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let wire of wireless">
+          <td>{{ wire?.['.id'] }}</td>
+          <td>{{ wire?.name }}</td>
+          <td>{{ wire?.['mac-address']}}</td>
+          <td>{{ wire?.band }}</td>
+          <td>{{ wire?.frequency }}</td>
+          <td>{{ wire?.ssid }}</td>
+          <td>
+            <div class="d-flex justify-content-middle">
+              <button class="btn btn-xs btn-light" (click)="editWireless(wire?.['.id'])"><i class="bi bi-xs bi-pencil"></i>
+              </button>
+            </div>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

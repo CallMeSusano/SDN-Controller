@@ -1,0 +1,79 @@
+<br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <label for="interface-type-select">Tipo de Interface:</label>
+        
+  <div class="row">
+      <div class="col-md-4">
+        <select class="form-control" id="interface-type-select" [(ngModel)]="selectedType">
+          <option value="all">Todos</option>
+          <option value="wlan">Wireless (WLAN)</option>
+          <option value="bridge">Bridges</option>
+        </select></div>
+        <div class="col-md-6">
+          <a  class="btn btn-primary" routerLink="/bridge">Adicionar Bridge</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <br>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Estado</th>
+        <th scope="col">MAC</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="interfaces">
+        <ng-container *ngIf="selectedType === 'all'">
+          <tr *ngFor="let iface of interfaces">
+            <td>{{ iface?.['.id'] }}</td>
+            <td>{{ iface.name }}</td>
+            <td>{{ iface.disabled =='false' ? 'Ativado' : 'Desativado'}}</td>
+            <td>{{ iface?.['mac-address'] }}</td>
+            <td>{{ iface.type }}</td>
+            <td>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="selectedType === 'wlan'">
+          <tr *ngFor="let iface of interfaces">
+            <ng-container *ngIf="iface.type === 'wlan'">
+              <td>{{ iface?.['.id'] }}</td>
+              <td>{{ iface.name }}</td>
+              <td>{{ iface.disabled }}</td>
+              <td>{{ iface?.['mac-address'] }}</td>
+              <td>{{ iface.type }}</td>
+              <td>
+              </td>
+            </ng-container>
+          </tr>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="selectedType === 'all' || selectedType === 'bridge'">
+        <tr *ngFor="let bridge of bridges">
+          <td>{{ bridge?.['.id'] }}</td>
+          <td>{{ bridge.name }}</td>
+          <td>{{ bridge.disabled =='false' ? 'Ativado' : 'Desativado'}}</td>
+          <td>{{ bridge?.['mac-address'] }}</td>
+          <td>bridge</td>
+          <td>
+            <div class="d-flex justify-content-middle">
+              <button class="btn btn-xs btn-light" (click)="editBridge(bridge?.['.id'])">
+                <i class="bi bi-xs bi-pencil"></i>
+              </button>
+              <button class="btn btn-xs btn-light" (click)="deleteBridge(bridge?.['.id'])"><i class="bi bi-xs bi-trash"></i></button>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

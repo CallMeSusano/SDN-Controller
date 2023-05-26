@@ -1,0 +1,67 @@
+<br><br>
+<div class="container">
+    <h1>{{ bridgeId ? 'Editar' : 'Adicionar' }} Wireless</h1>
+    <form (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label for="ssid">SSID:</label>
+            <input type="text" class="form-control" id="ssid" name="ssid" [(ngModel)]="ssid">
+          </div>
+          
+        <div class="form-group">
+            <label for="disabled">Estado:</label>
+            <select class="form-control" id="disabled" name="disabled" [(ngModel)]="disabled">
+                <option value="false">Ligado</option>
+                <option value="true">Desligado</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="mode">Modo:</label>
+            <select class="form-control" id="mode" name="mode" [(ngModel)]="mode">
+                <option value="station">Station</option>
+                <option value="alignment-only">Alignment Only</option>
+                <option value="ap-bridge">AP Bridge</option>
+                <option value="nstreme-dual-slave">Nstreme Dual Slave</option>
+                <option value="station-bridge">Station Bridge</option>
+                <option value="station-pseudobridge">Station Pseudo-Bridge</option>
+                <option value="station-pseudobridge-clone">Station Pseudo-Bridge Clone</option>
+                <option value="station-wds">Station WDS</option>
+                <option value="wds-slave">WDS Slave</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="band">Banda:</label>
+            <select class="form-control" id="band" name="band" [(ngModel)]="band">
+                <option value="2ghz-b">2GHz-B</option>
+                <option value="2ghz-only-g">2GHz Only G</option>
+                <option value="2ghz-b/g">2GHz B/G</option>
+                <option value="2ghz-only-n">2GHz Only N</option>
+                <option value="2ghz-b/g/n">2GHz B/G/N</option>
+                <option value="2ghz-g/n">2GHz G/N</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="frequency">Banda:</label>
+            <select class="form-control" id="frequency" name="frequency" [(ngModel)]="frequency">
+                <option value="2412">2412</option>
+                <option value="2417">2417</option>
+                <option value="2422">2422</option>
+                <option value="2427">2427</option>
+                <option value="2432">2432</option>
+                <option value="2437">2437</option>
+                <option value="2442">2442</option>
+                <option value="2447">2447</option>
+                <option value="2452">2452</option>
+                <option value="2457">2457</option>
+                <option value="2462">2462</option>
+                <option value="auto">auto</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="security-profile">Perfil de Segurança:</label>
+            <select class="form-control" id="security" name="security" [(ngModel)]="security">
+                <option *ngFor="let sec of secprofs" value="{{sec.name}}">{{sec.name}}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">{{ bridgeId ? 'Editar' : 'Adicionar' }}</button>
+    </form>
+</div>

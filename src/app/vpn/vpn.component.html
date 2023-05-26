@@ -1,0 +1,73 @@
+<br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <a class="btn btn-primary" routerLink="/wireguard">Adicionar Wireguard</a>
+        </div>
+    </div>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Porta</th>
+                <th scope="col">Chave Pública</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vpn of vpns">
+                <td>{{ vpn?.['.id'] }}</td>
+                <td>{{ vpn?.['name'] }}</td>
+                <td>{{ vpn?.['listen-port']}}</td>
+                <td>{{ vpn?.['public-key']}}</td>
+                <td>{{ vpn?.['disabled'] =='false' ? 'Ativado' : 'Desativado' }}</td>
+                <td>
+                    <div class="d-flex justify-content-middle">
+                        <button class="btn btn-xs btn-light" (click)="editWireguard(vpn?.['.id'])">
+                            <i class="bi bi-xs bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-xs btn-light" (click)="deleteWireguard(vpn?.['.id'])"><i
+                                class="bi bi-xs bi-trash"></i></button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-6">
+            <a class="btn btn-primary" routerLink="/peer">Adicionar Peer</a>
+        </div>
+    </div>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">Chave Pública</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let peer of peers">
+                <td>{{ peer?.['.id'] }}</td>
+                <td>{{ peer?.['allowed-address'] }}</td>
+                <td>{{ peer?.['public-key']}}</td>
+                <td>{{ peer?.['disabled'] =='false' ? 'Ativado' : 'Desativado'}}</td>
+                <td>
+                    <div class="d-flex justify-content-middle">
+                        <button class="btn btn-xs btn-light" (click)="editPeer(peer?.['.id'])">
+                            <i class="bi bi-xs bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-xs btn-light" (click)="deletePeer(peer?.['.id'])"><i
+                                class="bi bi-xs bi-trash"></i></button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

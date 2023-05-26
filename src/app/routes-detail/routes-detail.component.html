@@ -1,0 +1,23 @@
+<br><br>
+<div class="container">
+    <h1>{{ bridgeId ? 'Editar' : 'Adicionar' }} Rota</h1>
+    <form (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label for="dstadd">Endereço de Destino:</label>
+            <input type="text" class="form-control" id="dstadd" name="dstadd" [(ngModel)]="dstadd">
+          </div>
+          <div class="form-group">
+            <label for="lcladd">Gateway:</label>
+            <input type="text" class="form-control" id="lcladd" name="lcladd" [(ngModel)]="lcladd">
+          </div>
+        <div class="form-group">
+            <label for="band">VRF Interface:</label>
+            <select class="form-control" id="vrf" name="vrf" [(ngModel)]="vrf">
+                <option *ngFor="let interface of interfaces" value="{{interface.name}}">{{interface.name}}</option>
+                <option *ngFor="let bridge of bridges" value="{{bridge.name}}">{{bridge.name}}</option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">{{ bridgeId ? 'Editar' : 'Adicionar' }}</button>
+    </form>
+</div>

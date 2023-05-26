@@ -1,0 +1,37 @@
+<br><br>
+<div class="container">
+    <h1>{{ bridgeId ? 'Editar' : 'Adicionar' }} Bridge</h1>
+    <form (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name">
+      </div>
+      <div class="form-group">
+        <label for="arp">ARP:</label>
+        <select class="form-control" id="arp" name="arp" [(ngModel)]="arp">
+          <option value="enabled">Enabled</option>
+          <option value="disabled">Disabled</option>
+          <option value="local-proxy-arp">Local Proxy ARP</option>
+          <option value="proxy-arp">Proxy ARP</option>
+          <option value="reply-only">Reply Only</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ageing">Ageing:</label>
+        <input type="text" class="form-control" id="ageing" name="ageing" [(ngModel)]="ageing">
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="igmp" name="igmp" [(ngModel)]="igmp">
+        <label class="form-check-label" for="igmp">IGMP Snooping</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="dhcp" name="dhcp" [(ngModel)]="dhcp">
+        <label class="form-check-label" for="dhcp">DHCP Snooping</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="fastforward" name="fastforward" [(ngModel)]="fastforward">
+        <label class="form-check-label" for="fastforward">Fast Forward</label>
+      </div>
+      <button type="submit" class="btn btn-primary">{{ bridgeId ? 'Editar' : 'Adicionar' }}</button>
+    </form>
+  </div>

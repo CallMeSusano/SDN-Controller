@@ -1,0 +1,39 @@
+<br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <a  class="btn btn-primary" routerLink="/dhcpDetail">Adicionar DHCP</a>
+    </div>
+  </div>
+  <br>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Interface</th>
+        <th scope="col">Lease Time</th>
+        <th scope="col">Pool de Endereços</th>
+        <th scope="col">Ações</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let d of dhcps">
+          <td>{{ d?.['.id'] }}</td>
+          <td>{{ d?.['name'] }}</td>
+          <td>{{ d.interface}}</td>
+          <td>{{ d?.['lease-time']}}</td>
+          <td>{{ d?.['address-pool'] }}</td>
+          <td>
+            <div class="d-flex justify-content-middle">
+            <button class="btn btn-xs btn-light" (click)="editDhcp(d?.['.id'])">
+              <i class="bi bi-xs bi-pencil"></i>
+            </button>
+            <button class="btn btn-xs btn-light" (click)="deleteDhcp(d?.['.id'])"><i class="bi bi-xs bi-trash"></i></button>
+          </div>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

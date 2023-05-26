@@ -1,0 +1,23 @@
+<br><br>
+<div class="container">
+    <h1>{{ bridgeId ? 'Editar' : 'Adicionar' }} DHCP</h1>
+    <form (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label for="name">Nome:</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name">
+          </div>
+        <div class="form-group">
+            <label for="interface">Interface:</label>
+            <select class="form-control" id="interface" name="interface" [(ngModel)]="interface">
+                <option *ngFor="let intf of interfaces" value="{{intf.name}}">{{intf.name}}</option>
+                <option *ngFor="let bridge of bridges" value="{{bridge.name}}">{{bridge.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="lease">Lease Time:</label>
+            <input type="text" class="form-control" id="lease" name="lease" [(ngModel)]="lease">
+          </div>
+        <br>
+        <button type="submit" class="btn btn-primary">{{ bridgeId ? 'Editar' : 'Adicionar' }}</button>
+    </form>
+</div>

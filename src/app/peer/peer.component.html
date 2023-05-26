@@ -1,0 +1,22 @@
+<br><br>
+<div class="container">
+    <h1>{{ bridgeId ? 'Editar' : 'Adicionar' }} Peer</h1>
+    <form (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label for="int">Interface:</label>
+            <select class="form-control" id="int" name="int" [(ngModel)]="int">
+                <option *ngFor="let interface of interfaces" value="{{interface.name}}">{{interface.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="key">Chave Pública:</label>
+            <input type="text" class="form-control" id="key" name="key" [(ngModel)]="key">
+        </div>
+        <div class="form-group">
+            <label for="addr">Endereços Autorizados:</label>
+            <input type="text" class="form-control" id="addr" name="addr" [(ngModel)]="addr">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">{{ bridgeId ? 'Editar' : 'Adicionar' }}</button>
+    </form>
+</div>

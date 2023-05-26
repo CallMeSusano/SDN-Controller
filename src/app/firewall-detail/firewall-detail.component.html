@@ -1,0 +1,49 @@
+<br><br>
+<div class="container">
+    <h1>{{ bridgeId ? 'Editar' : 'Adicionar' }} Regra de Firewall</h1>
+    <form (ngSubmit)="submitForm()">
+
+        
+        <div class="form-group">
+            <label for="action">Action:</label>
+            <select class="form-control" id="action" name="action" [(ngModel)]="action">
+                <option value="accept">Accept</option>
+                <option value="reject">Reject</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="chain">Chain:</label>
+            <select class="form-control" id="chain" name="chain" [(ngModel)]="chain">
+                <option value="forward">Forward</option>
+                <option value="input">Input</option>
+                <option value="output">Output</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="srcadd">Endereço Origem:</label>
+            <input type="text" class="form-control" id="srcadd" name="srcadd" [(ngModel)]="srcadd">
+        </div>
+        <div class="form-group">
+            <label for="dstadd">Endereço Destino:</label>
+            <input type="text" class="form-control" id="dstadd" name="dstadd" [(ngModel)]="dstadd">
+        </div>
+        <div class="form-group">
+            <label for="protocol">Protocolo:</label>
+            <select class="form-control" id="protocol" name="protocol" [(ngModel)]="protocol">
+                <option value="icmp">ICMP</option>
+                <option value="tcp">TCP</option>
+                <option value="udp">UPD</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="srcprt">Porta Origem:</label>
+            <input type="text" class="form-control" id="srcprt" name="srcprt" [(ngModel)]="srcprt">
+        </div>
+        <div class="form-group">
+            <label for="dstprt">Porta Destino:</label>
+            <input type="text" class="form-control" id="dstprt" name="dstprt" [(ngModel)]="dstprt">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">{{ bridgeId ? 'Editar' : 'Adicionar' }}</button>
+    </form>
+</div>

@@ -1,0 +1,40 @@
+<br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <a  class="btn btn-primary" routerLink="/address">Adicionar Rota</a>
+    </div>
+  </div>
+  <br>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Interface Real</th>
+        <th scope="col">Interface</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Rede</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let add of addresses">
+          <td>{{ add?.['.id'] }}</td>
+          <td>{{ add?.['actual-interface'] }}</td>
+          <td>{{ add.interface}}</td>
+          <td>{{ add.address}}</td>
+          <td>{{ add?.['disabled'] =='false' ? 'Ativado' : 'Desativado' }}</td>
+          <td>{{ add?.['network'] }}</td>
+          <td>
+            <div class="d-flex justify-content-middle">
+            <button class="btn btn-xs btn-light" (click)="editAddress(add?.['.id'])">
+              <i class="bi bi-xs bi-pencil"></i>
+            </button>
+            <button class="btn btn-xs btn-light" (click)="deleteAddress(add?.['.id'])"><i class="bi bi-xs bi-trash"></i></button>
+          </div>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
